@@ -6,6 +6,7 @@ import android.media.MediaPlayer;
 public class AudioPlayer {
 	
 	private MediaPlayer mPlayer;
+	public boolean isDonePlaying;
 	
 	public void initialize(Context c) {
 		//Initial call to stop, to make sure only one instance exists if the user clicks play twice
@@ -15,6 +16,7 @@ public class AudioPlayer {
 		mPlayer.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
 			public void onCompletion(MediaPlayer mp) {
 				stop();
+				//Bug: onCompletion, button still shows "Pause", how to fix without losing encapsulation?
 			}
 		});
 	}
